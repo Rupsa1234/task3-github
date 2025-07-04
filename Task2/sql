@@ -1,0 +1,27 @@
+## 🗃️ SQL Script Used
+
+```sql
+-- Create a new database
+CREATE DATABASE CompanyDB;
+
+-- Use the database
+USE CompanyDB;
+
+-- Create a table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100) UNIQUE,
+    HireDate DATE DEFAULT GETDATE(),
+    Salary DECIMAL(10,2)
+);
+
+-- Insert sample data
+INSERT INTO Employees (FirstName, LastName, Email, Salary)
+VALUES
+    ('John', 'Doe', 'john.doe@company.com', 50000.00),
+    ('Jane', 'Smith', 'jane.smith@company.com', 55000.00);
+
+-- Query data
+SELECT * FROM Employees WHERE Salary > 50000;
